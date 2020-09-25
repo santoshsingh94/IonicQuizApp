@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/welcome"></ion-back-button>
+      </ion-buttons>
+    <ion-title>Register Mobile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form text-center [formGroup]="mobileEntryForm" (ngSubmit)="verifyMobile()">
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-icon src="assets/icon/flag-india.svg"></ion-icon>
+      </ion-thumbnail>
+      <ion-select formControlName="countryCode">
+        <ion-select-option selected="true" value="+91">+91 India</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <span>+91</span>
+      </ion-thumbnail>
+      <ion-input formControlName="mobile" type="tel" autofocus="true" inputmode="tel" title="Enter 10 digit Mobile Number" 
+          pattern="^[6-9]\d{9}$" required="true" placeholder="Enter Your Mobile Number" minlength="10" maxlength="10"></ion-input>
+    </ion-item>
+
+    <p class="input-error" *ngIf="isMobileError()">
+      Please enter a valid mobile number.
+    </p>
+    
+    <ion-button class="next bordered" type="submit" [disabled]="!mobileEntryForm.valid" shape="round" strong="true">Next</ion-button>
+  </form>
+</ion-content>

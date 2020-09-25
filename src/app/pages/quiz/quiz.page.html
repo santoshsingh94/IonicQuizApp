@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title text-center>Quiz</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card color="primary white-text" *ngFor="let qn of quizService.questions">
+    <ion-card-header>
+      <ion-card-title> {{qn.question}}</ion-card-title>
+      <ul>
+        <li>{{qn.options.option1}}</li>
+        <li>{{qn.options.option2}}</li>
+        <li>{{qn.options.option3}}</li>
+        <li>{{qn.options.option4}}</li>
+      </ul>
+    </ion-card-header>
+  </ion-card>
+</ion-content>

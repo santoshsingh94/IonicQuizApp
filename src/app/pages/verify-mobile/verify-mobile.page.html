@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/welcome"></ion-back-button>
+      </ion-buttons>
+    <ion-title>Verify Mobile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content text-center padding>
+  <div class="container">
+    <section>
+      <p>
+        Please enter the verification code sent to<br>
+        {{ mobile }}
+      </p>
+    
+      <form [formGroup]="verifyCodeForm" (ngSubmit)="verifyCode()">
+        <ion-item>
+          <ion-input text-center formControlName="code" type="text" minlength="4" maxlength="8"
+              placeholder="Enter Verification Code"></ion-input>
+        </ion-item>
+        <p *ngIf="!isValidCode" class="input-error">
+          Please enter a valid verification code.
+        </p>
+    
+        <p *ngIf="resendCodeSeconds > 0; else elseBlock" class="resend-text">
+          Resend code in <span>{{ resendCodeSeconds }}</span> seconds.
+        </p>
+        <ng-template #elseBlock>
+          <p><ion-button shape="round" size="small" (click)="resendCode()">Resend Code</ion-button></p>
+        </ng-template>
+
+        <ion-button class="next bordered" type="submit" [disabled]="!verifyCodeForm.valid" shape="round" strong="true">
+          Next
+        </ion-button>
+      </form>
+    </section>
+  
+    <section text-center>
+      <img class="page-bottom-logo" src="assets/qfy-logo-white.png" alt="Qfy Logo"><br>
+    </section>
+  </div>
+</ion-content>

@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card class="card">
+    <ion-card-header text-center>
+      <ion-card-title>Quiz starts in</ion-card-title>
+      <ion-grid style="position: relative"
+        ><canvas id="myChart"></canvas
+      ></ion-grid>
+      <ion-grid
+        id="textInDonught1"
+        data-bind="text: alarmIDs().length"
+      ></ion-grid>
+      <ion-grid id="textInDonught2"> 48% </ion-grid>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card class="card">
+    <ion-card-header text-center>
+      <ion-row>
+        <ion-col size="2">
+          <ion-grid class="circle1"
+            ><i class="las la-coffee" style="font-size: xx-large"></i
+          ></ion-grid>
+        </ion-col>
+        <ion-col size="8">
+          <ion-card-title>Next quiz date</ion-card-title>
+        </ion-col>
+      </ion-row>
+    </ion-card-header>
+  </ion-card>
+  <ion-card class="card">
+    <ion-card-header text-center>
+      <ion-row>
+        <ion-col size="2">
+          <ion-grid class="circle2"
+            ><i
+              class="fa fa-snowflake-o"
+              aria-hidden="true"
+              style="font-size: xx-large"
+            ></i
+          ></ion-grid>
+        </ion-col>
+        <ion-col size="8">
+          <ion-card-title>Next quiz date</ion-card-title>
+        </ion-col>
+      </ion-row>
+    </ion-card-header>
+  </ion-card>
+</ion-content>

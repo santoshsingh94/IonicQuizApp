@@ -1,0 +1,15 @@
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    ion-item {
+        max-width: 16em;
+        margin: 0 auto;
+    }
+    
+    .resend-text {
+        font-size: .88em;
+    }
+}

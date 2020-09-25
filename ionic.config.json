@@ -1,0 +1,7 @@
+{
+  "name": "qfy",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

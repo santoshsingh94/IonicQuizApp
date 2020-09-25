@@ -1,0 +1,16 @@
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    .qfy-logo {
+        margin: 1em;
+        max-height: 8.8em;
+    }
+
+    p {
+        font-size: .85em;
+    }
+}

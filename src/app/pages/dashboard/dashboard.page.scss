@@ -1,0 +1,49 @@
+$color: (
+  primary: #488aff,
+  white: #ffffff,
+);
+.test {
+  background-color: #f0f3f4;
+}
+.card {
+  background-color: #ffffff;
+}
+.circle1 {
+  height: 50px;
+  width: 50px;
+  background-color: #00e5e5;
+  border-radius: 50%;
+  margin-left: -10%;
+}
+.circle2 {
+  height: 50px;
+  width: 50px;
+  background-color: #ff6c6c;
+  border-radius: 50%;
+  margin-left: -10%;
+}
+#textInDonught1 {
+  position: absolute;
+  top: 50%;
+  margin-top: -15px;
+  left: 50%;
+  font-size: 30px;
+  line-height: 30px;
+  margin-left: -50px;
+  width: 100px;
+  text-align: center;
+}
+#textInDonught2 {
+  position: absolute;
+  top: 50%;
+  margin-top: 10px;
+  left: 50%;
+  font-size: 15px;
+  line-height: 15px;
+  margin-left: -50px;
+  width: 100px;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  font-size: large;
+}

@@ -1,0 +1,32 @@
+form {
+    max-width: 20em;
+    margin: 0 auto;
+    padding-top: 2em;
+}
+
+ion-item {
+    ion-thumbnail {
+        display: flex;
+        align-items: center;
+
+        ion-icon {
+            font-size: 1.2em;
+        }
+    }
+    .in-item {
+        max-width: 100%;
+    }
+
+    .select-disabled {
+        opacity: .9;
+    }
+
+    ion-select {
+        --padding-start: 0;
+        width: 100%;
+    }
+}   
+
+.no-hover{
+    --background-hover: var(--background);
+}

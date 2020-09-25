@@ -1,0 +1,39 @@
+<ion-content fullscreen="true" text-center padding>
+  <section class="container">
+    <form text-center [formGroup]="profileForm" (ngSubmit)="createProfile()">
+      <h5>Your Profile</h5>
+      <ion-avatar>
+        <img *ngIf="profileImgSrc; else personIcon" [src]="profileImgSrc" alt="Avatar">
+        <ng-template #personIcon>
+          <ion-icon class="profile-default" name="person"></ion-icon>
+        </ng-template>
+        <ion-button type="button" shape="round" fill="clear" size="small" (click)="getProfileImage()">
+          <ion-icon slot="icon-only" name="camera" size="small"></ion-icon>
+        </ion-button>
+      </ion-avatar>
+      <input type="hidden" formControlName="profileImage">
+
+      <ion-item>
+        <ion-input formControlName="username" type="text" minlength="10" maxlength="15" placeholder="Username"></ion-input>
+        <ion-thumbnail slot="end" (click)="showHelp('username')">
+          <ion-icon name="help-circle" size="large" class="input-help"></ion-icon>
+        </ion-thumbnail>
+      </ion-item>
+  
+      <ion-item>
+        <ion-input formControlName="referral" type="text" placeholder="Referral Code (Optional)"></ion-input>
+        <ion-thumbnail slot="end" (click)="showHelp('referral')">
+          <ion-icon name="help-circle" size="large" class="input-help"></ion-icon>
+        </ion-thumbnail>
+      </ion-item>
+      
+      <ion-button class="next bordered" type="submit" [disabled]="!profileForm.valid" shape="round" strong="true">
+        Next
+      </ion-button>
+    </form>
+
+    <section text-center>
+      <img class="page-bottom-logo" src="assets/qfy-logo-white.png" alt="Qfy Logo"><br>
+    </section>
+  </section>
+</ion-content>
