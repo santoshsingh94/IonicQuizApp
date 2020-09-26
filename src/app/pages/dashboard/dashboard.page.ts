@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegisterService } from '../../shared/register.service';
+import { PopoverController } from '@ionic/angular';
 import { Chart } from 'chart.js';
 
+import { PopinfoComponent } from '../popinfo/popinfo.component';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -11,7 +13,8 @@ import { Chart } from 'chart.js';
 export class DashboardPage implements OnInit {
   constructor(
     private router: Router,
-    public registerService: RegisterService
+    public registerService: RegisterService,
+    public popoverCtrl: PopoverController
   ) {}
   DonughtChart = [];
   ngOnInit() {
@@ -51,5 +54,15 @@ export class DashboardPage implements OnInit {
         },
       },
     });
+  }
+  async presentPopover(ev: any) {
+    const popover = await this.popoverCtrl.create({
+      component: PopinfoComponent,
+      event: ev,
+    });
+    await popover.present();
+  }
+  counter(i: number) {
+    return new Array(i);
   }
 }

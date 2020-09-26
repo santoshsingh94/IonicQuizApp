@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { DashboardPage } from './dashboard.page';
-
+import { PopinfoComponent } from '../popinfo/popinfo.component';
 const routes: Routes = [
   {
     path: '',
@@ -15,6 +15,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  entryComponents: [PopinfoComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -22,6 +23,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes),
   ],
-  declarations: [DashboardPage],
+  declarations: [DashboardPage, PopinfoComponent],
 })
 export class DashboardPageModule {}

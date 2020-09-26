@@ -5,50 +5,57 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card class="card">
-    <ion-card-header text-center>
-      <ion-card-title>Quiz starts in</ion-card-title>
-      <ion-grid style="position: relative"
-        ><canvas id="myChart"></canvas
-      ></ion-grid>
-      <ion-grid
-        id="textInDonught1"
-        data-bind="text: alarmIDs().length"
-      ></ion-grid>
-      <ion-grid id="textInDonught2"> 48% </ion-grid>
-    </ion-card-header>
-  </ion-card>
+  <ion-grid fixed center>
+    <ion-row
+      style="height: 100%"
+      class="ion-align-items-center ion-justify-content-center"
+    >
+      <ion-col size-xs="12" size-sm="12" size-md="9" size-lg="7" size-xl="6">
+        <ion-card class="card">
+          <ion-card-header text-center>
+            <ion-row>
+              <ion-col size="11">
+                <ion-card-title>Quiz starts in</ion-card-title>
+              </ion-col>
+              <ion-col size="1">
+                <ion-buttons>
+                  <span (click)="presentPopover($event)" ion-button icon-only>
+                    <ion-icon name="more" slot="icon-only"></ion-icon>
+                  </span>
+                </ion-buttons>
+              </ion-col>
+            </ion-row>
+            <ion-grid style="position: relative">
+              <canvas id="myChart"></canvas>
+            </ion-grid>
+            <ion-grid id="textInDonught1" data-bind="text: alarmIDs().length">
+            </ion-grid>
+            <ion-grid id="textInDonught2"> 48% </ion-grid>
+          </ion-card-header>
+        </ion-card>
 
-  <ion-card class="card">
-    <ion-card-header text-center>
-      <ion-row>
-        <ion-col size="2">
-          <ion-grid class="circle1"
-            ><i class="las la-coffee" style="font-size: xx-large"></i
-          ></ion-grid>
-        </ion-col>
-        <ion-col size="8">
-          <ion-card-title>Next quiz date</ion-card-title>
-        </ion-col>
-      </ion-row>
-    </ion-card-header>
-  </ion-card>
-  <ion-card class="card">
-    <ion-card-header text-center>
-      <ion-row>
-        <ion-col size="2">
-          <ion-grid class="circle2"
-            ><i
-              class="fa fa-snowflake-o"
-              aria-hidden="true"
-              style="font-size: xx-large"
-            ></i
-          ></ion-grid>
-        </ion-col>
-        <ion-col size="8">
-          <ion-card-title>Next quiz date</ion-card-title>
-        </ion-col>
-      </ion-row>
-    </ion-card-header>
-  </ion-card>
+        <ion-card class="card" *ngFor="let in of counter(3) ;let i = index">
+          <ion-card-header text-center>
+            <ion-row>
+              <ion-col size="2">
+                <ion-grid class="circle1"
+                  ><i class="las la-coffee" style="font-size: xx-large"></i
+                ></ion-grid>
+              </ion-col>
+              <ion-col size="9">
+                <ion-card-title>Next quiz date</ion-card-title>
+              </ion-col>
+              <ion-col size="1">
+                <ion-buttons>
+                  <span (click)="presentPopover($event)" ion-button icon-only>
+                    <ion-icon name="more" slot="icon-only"></ion-icon>
+                  </span>
+                </ion-buttons>
+              </ion-col>
+            </ion-row>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

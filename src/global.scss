@@ -12,47 +12,46 @@
 
 // Custom Global Styles
 ion-content {
-    --ion-background-color: radial-gradient(#2c535e, #000000);
-    --ion-text-color: var(--ion-color-light);
+  --ion-background-color: radial-gradient(#2c535e, #000000);
+  --ion-text-color: var(--ion-color-light);
 }
 
 ion-item {
-    --ion-background-color: var(--ion-text-color);
-    --color: var(--ion-color-dark);
-    --highlight-background: transparent;
-    --border-radius: 4em;
+  --ion-background-color: var(--ion-text-color);
+  --color: var(--ion-color-dark);
+  --highlight-background: transparent;
+  --border-radius: 4em;
 
-    & + ion-item {
-        margin-top: 1.8em;
-    }
+  & + ion-item {
+    margin-top: 1.8em;
+  }
 
-    ion-thumbnail {
-        --size: 1.8em;
-        width: var(--size);
-        height: var(--size);
-    }
+  ion-thumbnail {
+    --size: 1.8em;
+    width: var(--size);
+    height: var(--size);
+  }
 }
-
 ion-button.bordered {
-    --border-width: 1px;
-    --border-style: solid;
+  --border-width: 1px;
+  --border-style: solid;
 }
 
 .input-error {
-    color: var(--ion-color-danger);
-    font-size: .8em;
+  color: var(--ion-color-danger);
+  font-size: 0.8em;
 }
 
 .page-bottom-logo {
-    margin: 1em;
-    max-height: 6.6em;
-    opacity: .4;
+  margin: 1em;
+  max-height: 6.6em;
+  opacity: 0.4;
 }
 
 form {
-    ion-button.next {
-        --padding-start: 4em;
-        --padding-end: 4em;
-        margin-top: 2em;
-    }
+  ion-button.next {
+    --padding-start: 4em;
+    --padding-end: 4em;
+    margin-top: 2em;
+  }
 }

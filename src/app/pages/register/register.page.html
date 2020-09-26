@@ -1,45 +1,77 @@
 <ion-header>
   <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/welcome"></ion-back-button>
-      </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/welcome"></ion-back-button>
+    </ion-buttons>
     <ion-title>Register User</ion-title>
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content padding>
-  <form text-center [formGroup]="registrationForm" (ngSubmit)="registerUser()" novalidate>
-
+  <form
+    text-center
+    [formGroup]="registrationForm"
+    (ngSubmit)="registerUser()"
+    novalidate
+  >
     <ion-item lines="full">
       <ion-label position="floating">Name</ion-label>
-      <ion-input formControlName="name" type="text" ></ion-input>
+      <ion-input formControlName="name" type="text"></ion-input>
     </ion-item>
-    <span class="input-error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
+    <span
+      class="input-error ion-padding"
+      *ngIf="isSubmitted && errorControl.name.errors?.required"
+    >
       Name is required.
     </span>
-    <span class="input-error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.minlength">
+    <span
+      class="input-error ion-padding"
+      *ngIf="isSubmitted && errorControl.name.errors?.minlength"
+    >
       Name should be min 2 chars long.
     </span>
 
     <ion-item lines="full" class="no-hover">
       <ion-label position="floating">DOB</ion-label>
-      <ion-datetime (ionChange)="getDate($event)" formControlName="dob" [max]="today" [value]="today"></ion-datetime>
+      <ion-datetime
+        (ionChange)="getDate($event)"
+        formControlName="dob"
+        [max]="today"
+        [value]="today"
+      ></ion-datetime>
     </ion-item>
 
-    <ion-item class="no-hover">  
-      <ion-label position="floating">Country</ion-label>  
-      <ion-select type="input" name="country" formControlName="country" placeholder="Select One">
-      <ion-select-option *ngFor="let country of countryOptions" value="{{ country.value }}">{{ country.displayValue }}</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <span class="input-error ion-padding" *ngIf="isSubmitted && errorControl.country.errors?.required">
-    Country is required.
-  </span>
+    <ion-item class="no-hover">
+      <ion-label position="floating">Country</ion-label>
+      <ion-select
+        type="input"
+        name="country"
+        formControlName="country"
+        placeholder="Select One"
+      >
+        <ion-select-option
+          *ngFor="let country of countryOptions"
+          value="{{ country.value }}"
+          >{{ country.displayValue }}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <span
+      class="input-error ion-padding"
+      *ngIf="isSubmitted && errorControl.country.errors?.required"
+    >
+      Country is required.
+    </span>
 
     <ion-row>
       <ion-col>
-        <ion-button class="next bordered" type="submit" shape="round" strong="true">Register</ion-button>
+        <ion-button
+          class="next bordered"
+          type="submit"
+          shape="round"
+          strong="true"
+          >Register</ion-button
+        >
       </ion-col>
     </ion-row>
   </form>
