@@ -38,6 +38,7 @@
     "core-js": "^2.5.4",
     "express": "^4.17.1",
     "mongoose": "^5.10.5",
+    "ng-circle-progress": "^1.5.1",
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
     "rxjs": "~6.3.3",

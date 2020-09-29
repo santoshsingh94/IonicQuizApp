@@ -1,19 +1,95 @@
 <ion-header>
   <ion-toolbar color="dark">
-    <ion-title text-center>Quiz</ion-title>
+    <ion-title text-center>Oh My Quiz!</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-card color="primary white-text" *ngFor="let qn of quizService.questions">
-    <ion-card-header>
-      <ion-card-title> {{qn.question}}</ion-card-title>
-      <ul>
-        <li>{{qn.options.option1}}</li>
-        <li>{{qn.options.option2}}</li>
-        <li>{{qn.options.option3}}</li>
-        <li>{{qn.options.option4}}</li>
-      </ul>
-    </ion-card-header>
-  </ion-card>
+  <ion-grid fixed center>
+    <ion-row
+      style="height: 100%"
+      class="ion-align-items-center ion-justify-content-center"
+    >
+      <ion-col size-xs="12" size-sm="12" size-md="9" size-lg="7" size-xl="6">
+        <ion-row *ngIf="quizService.questions">
+          <ion-title text-center
+            ><b>Q.</b>{{quizService.questionInProgres+1}}</ion-title
+          >
+          <ion-row>
+            <ion-col size="10">
+              <ion-title text-center text-wrap id="toolbar-title">
+                {{quizService.questions[quizService.questionInProgres].question}} </ion-title
+              ><br />
+            </ion-col>
+          </ion-row>
+          <ion-title text-center>
+            <circle-progress
+              [percent]="95"
+              [radius]="70"
+              [outerStrokeWidth]="14"
+              [innerStrokeWidth]="5"
+              [outerStrokeColor]="'#78C000'"
+              [innerStrokeColor]="'#C7E596'"
+              [animation]="true"
+              [animationDuration]="300"
+              [title]="progress"
+            >
+            </circle-progress>
+          </ion-title>
+
+          <ion-row>
+            <ion-col
+              size="6"
+              *ngFor="let qn of quizService.questions[quizService.questionInProgres].options| keyvalue;let i=index;"
+            >
+              <ion-card
+                style="background-color: #ffff"
+                text-center
+                (click)="Answer(quizService.questions[quizService.questionInProgres]._id,qn.key)"
+              >
+                <ion-card-content>
+                  <ion-text>
+                    <li
+                      text-center
+                      style="margin-left: 40%; list-style: none; color: white"
+                      *ngIf="this.i == '0'"
+                      class="bgColoredCircle1"
+                    >
+                      {{qn.key}}
+                    </li>
+                    <li
+                      text-center
+                      style="margin-left: 40%; list-style: none; color: white"
+                      *ngIf="this.i == '1'"
+                      class="bgColoredCircle2"
+                    >
+                      {{qn.key}}
+                    </li>
+                    <li
+                      text-center
+                      style="margin-left: 40%; list-style: none; color: white"
+                      *ngIf="this.i == '2'"
+                      class="bgColoredCircle3"
+                    >
+                      {{qn.key}}
+                    </li>
+                    <li
+                      text-center
+                      style="margin-left: 40%; list-style: none; color: white"
+                      *ngIf="this.i == '3'"
+                      class="bgColoredCircle4"
+                    >
+                      {{qn.key}}
+                    </li>
+                    <br />
+                    <li text-center style="list-style: none">{{qn.value}}</li>
+                  </ion-text>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

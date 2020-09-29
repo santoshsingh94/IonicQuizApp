@@ -33,6 +33,10 @@ const routes: Routes = [
     path: 'quiz',
     loadChildren: './pages/quiz/quiz.module#QuizPageModule',
   },
+  {
+    path: 'result',
+    loadChildren: './pages/result/result.module#ResultPageModule',
+  },
 ];
 
 @NgModule({

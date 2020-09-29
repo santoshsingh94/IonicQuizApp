@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { QuizPage } from './quiz.page';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 const routes: Routes = [
   {
@@ -20,6 +21,25 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 50,
+      space: -10,
+      outerStrokeGradient: true,
+      outerStrokeWidth: 10,
+      outerStrokeColor: '#4882c2',
+      outerStrokeGradientStopColor: '#53a9ff',
+      innerStrokeColor: '#e7e8ea',
+      innerStrokeWidth: 10,
+      titleColor: '#ffffff',
+      subtitle: '',
+      animateTitle: false,
+      animationDuration: 1000,
+      showUnits: true,
+      showBackground: false,
+      clockwise: false,
+      // startFromZero: false,
+    }),
   ],
   declarations: [QuizPage],
 })

@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { DashboardPage } from './dashboard.page';
 import { PopinfoComponent } from '../popinfo/popinfo.component';
+
+
 const routes: Routes = [
   {
     path: '',
