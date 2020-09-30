@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../../shared/quiz.service';
 import { NavController } from '@ionic/angular';
-
+//const config = require('../../../config');
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.page.html',
@@ -11,34 +11,33 @@ export class QuizPage implements OnInit {
   progress = 0;
   progressBar = document.querySelector('.progress-bar');
   intervalId;
-
+  maxQuestions: number = 10; //config.maxQuestionToDisplay;
+  timeForQuestion: number = 0;
+  offset: number = 0;
   constructor(
     public quizService: QuizService,
     private navCtrl: NavController
   ) {}
 
   ngOnInit() {
-    this.quizService.seconds = 0;
     this.quizService.questionInProgres = 0;
     this.quizService.getQuizQuestions().subscribe((data: any) => {
       this.quizService.questions = data;
+      this.timeForQuestion = this.quizService.questions[0].maxTime;
       console.log(this.quizService.questions);
       console.log(this.quizService.questionInProgres);
-      this.startTimer();
     });
     const getDownloadProgress = () => {
-      if (this.progress <= 99) {
-        this.progress = this.progress + 1;
-      } else {
-        clearInterval(this.intervalId);
+      console.log(this.timeForQuestion);
+      if (this.progress <= 98) {
+        this.offset = 100 / this.timeForQuestion;
+        this.progress = this.progress + this.offset;
       }
+      // else {
+      //   clearInterval(this.intervalId);
+      // }
     };
     this.intervalId = setInterval(getDownloadProgress, 1000);
-  }
-  startTimer() {
-    this.quizService.timer = setInterval(() => {
-      this.quizService.seconds++;
-    }, 1000);
   }
   Answer(qID, choice) {
     console.log(qID + choice);
@@ -47,9 +46,16 @@ export class QuizPage implements OnInit {
     ].userAnswer = choice;
 
     this.quizService.questionInProgres++;
-    if (this.quizService.questionInProgres == 7) {
-      clearInterval(this.quizService.timer);
-      this.navCtrl.navigateForward('/result');
-    }
+    if (this.quizService.questionInProgres < this.maxQuestions) {
+      //reset counter
+      this.progress = 0;
+      this.timeForQuestion = this.quizService.questions[
+        this.quizService.questionInProgres
+      ].maxTime;
+      console.log(this.timeForQuestion);
+    } else this.navCtrl.navigateForward('/result');
+  }
+  ngOnDestroy() {
+    clearInterval(this.intervalId);
   }
 }

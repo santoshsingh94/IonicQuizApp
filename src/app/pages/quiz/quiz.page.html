@@ -11,33 +11,47 @@
       class="ion-align-items-center ion-justify-content-center"
     >
       <ion-col size-xs="12" size-sm="12" size-md="9" size-lg="7" size-xl="6">
-        <ion-row *ngIf="quizService.questions">
-          <ion-title text-center
-            ><b>Q.</b>{{quizService.questionInProgres+1}}</ion-title
+        <div
+          *ngIf="quizService.questions && quizService.questionInProgres < this.maxQuestions"
+        >
+          <ion-grid>
+            <ion-row class="qnNumber" text-center>
+              <ion-col text-center>
+                <ion-title text-center text-wrap>
+                  <b>Q.</b>{{quizService.questionInProgres+1}}</ion-title
+                >
+              </ion-col>
+            </ion-row>
+            <ion-row justify-content-center>
+              <ion-col size="12" align-items-center>
+                <ion-item text-center text-wrap>
+                  {{quizService.questions[quizService.questionInProgres].question}} </ion-item
+                ><br />
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-title text-center>
+                  <circle-progress
+                    [percent]="progress"
+                    [radius]="70"
+                    [outerStrokeWidth]="14"
+                    [innerStrokeWidth]="5"
+                    [outerStrokeColor]="'#78C000'"
+                    [innerStrokeColor]="'#C7E596'"
+                    [animation]="true"
+                    [animationDuration]="50"
+                    [startFromZero]="false"
+                    [title]="progress"
+                  >
+                  </circle-progress>
+                </ion-title>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-row
+            *ngIf="quizService.questions[quizService.questionInProgres].options!='undefined'"
           >
-          <ion-row>
-            <ion-col size="10">
-              <ion-title text-center text-wrap id="toolbar-title">
-                {{quizService.questions[quizService.questionInProgres].question}} </ion-title
-              ><br />
-            </ion-col>
-          </ion-row>
-          <ion-title text-center>
-            <circle-progress
-              [percent]="95"
-              [radius]="70"
-              [outerStrokeWidth]="14"
-              [innerStrokeWidth]="5"
-              [outerStrokeColor]="'#78C000'"
-              [innerStrokeColor]="'#C7E596'"
-              [animation]="true"
-              [animationDuration]="300"
-              [title]="progress"
-            >
-            </circle-progress>
-          </ion-title>
-
-          <ion-row>
             <ion-col
               size="6"
               *ngFor="let qn of quizService.questions[quizService.questionInProgres].options| keyvalue;let i=index;"
@@ -88,7 +102,7 @@
               </ion-card>
             </ion-col>
           </ion-row>
-        </ion-row>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

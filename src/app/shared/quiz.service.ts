@@ -9,7 +9,6 @@ export class QuizService {
   baseUrl = 'http://localhost:3000';
 
   questions: any[];
-  seconds: number;
   timer;
   questionInProgres: number;
   correctAnswerCount: number = 0;
